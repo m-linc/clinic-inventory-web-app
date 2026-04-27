@@ -49,4 +49,11 @@ The system uses six core HTML templates located in the `templates/` folder:
 - `signup.html` → User registration page
 - `suppliers.html` → Supplier management interface
 
+## Setup
+1. Clone the repo
+2. Install dependencies: `pip install -r requirements.txt`
+3. Create database: `mysql -u user -p clinic_inventory < schema.sql`
+4. Run: `flask run`
+
+
 
