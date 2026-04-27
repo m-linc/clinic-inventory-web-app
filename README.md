@@ -37,6 +37,7 @@ To set up the database:
 1. Create a new database (e.g., `clinic_inventory`).
 2. Run the `schema.sql` file to generate all required tables.
 3. Update `DB_CONFIG` in your code with your database credentials.
+⚠️ Table names are preserved to match code references in the project. Do not rename them unless you also update the code.
 
 ## Templates
 The system uses six core HTML templates located in the `templates/` folder:
