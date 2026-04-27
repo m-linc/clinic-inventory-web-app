@@ -34,7 +34,6 @@ How it works:
 Configuration:
 - Replace `YOUR_POSTMARK_SERVER_TOKEN` with your own Postmark server token.
 - Replace `YOUR_VERIFIED_EMAIL` with a sender email verified in your Postmark account.
-- Do not commit real tokens or email addresses to GitHub.
 
 Flexibility:
 - Adapt the same pattern for SendGrid, Mailgun, or other providers.
@@ -52,7 +51,8 @@ The system uses six main tables:
 Setup:
 1. Create a new database (e.g., `clinic_inventory`).
 2. Run the `schema.sql` file to generate all required tables.
-3. Update `DB_CONFIG` in your code with your database credentials.  
+3. Update `DB_CONFIG` in your code with your database credentials.
+     
 ⚠️ Table names are preserved to match code references in the project. Do not rename them unless you also update the code.
 
 # Templates
