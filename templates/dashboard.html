@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>KCA Clinic Inventory System </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap CSS & Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <style>
+    :root {
+      --kca-primary: #192C57; /* Navy */
+      --kca-accent: #CEAA0C;  /* Gold */
+      --kca-white: #FFFFFF;  /* White */
+    }
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: linear-gradient(
+    to bottom,
+    var(--kca-primary) 0%, var(--kca-primary) 10%,   /* Navy top */
+    var(--kca-accent) 10%, var(--kca-accent) 50%,   /* Gold stripe */
+    var(--kca-white) 50%, var(--kca-white) 100%     /* White all the way down */
+  );
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Navbar */
+.navbar {
+  background-color: var(--kca-primary) !important;
+}
+.navbar-brand {
+  color: var(--kca-accent) !important;
+  font-weight: bold;
+}
+.navbar-text {
+  color: var(--kca-white) !important;
+}
+
+/* Headings */
+h1 {
+  color: var(--kca-primary);
+  font-size: clamp(1.5rem, 2vw, 2.5rem); /* scales with screen size */
+}
+
+/* Cards */
+.card {
+  border: 1px solid var(--kca-primary);
+  transition: all 0.3s ease-in-out;
+  min-height: auto; /* let Bootstrap grid handle sizing */
+}
+
+.card:hover {
+  transform: translateY(-5%);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15) !important;
+  border-color: var(--kca-accent);
+}
+
+.card-title {
+  color: var(--kca-primary);
+  transition: color 0.3s ease-in-out;
+}
+
+.card:hover .card-title {
+  color: var(--kca-accent);
+}
+
+.card-text {
+  transition: color 0.3s ease-in-out;
+}
+
+.card:hover .card-text {
+  color: var(--kca-primary);
+}
+
+/* Buttons */
+.btn-kca {
+  background-color: var(--kca-primary);
+  color: var(--kca-white);
+  border: none;
+  transition: all 0.3s ease-in-out;
+}
+.btn-kca:hover {
+  background-color: var(--kca-accent);
+  color: var(--kca-primary);
+  transform: scale(1.05);
+}
+
+.btn-logout {
+  background-color: #dc3545; /* Bootstrap red */
+  border: none;
+  transition: all 0.3s ease-in-out;
+}
+.btn-logout:hover {
+  background-color: #b02a37;
+  transform: scale(1.05);
+}
+
+/* Logo */
+.kca-logo {
+  position: fixed;
+  bottom: 2%;
+  left: 2%;
+  width: clamp(60px, 8vw, 100px); /* scales with screen size */
+  opacity: 0.8;
+  z-index: 1000;
+  transition: opacity 0.3s ease-in-out;
+}
+.kca-logo:hover {
+  opacity: 1;
+}
+
+/* Modal styling */
+.modal-content {
+  border: 2px solid var(--kca-primary);
+  border-radius: 1rem;
+}
+
+.modal-header {
+  background-color: var(--kca-primary);
+  color: var(--kca-white);
+  border-bottom: none;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.5rem; /* smaller headings on tablets/phones */
+  }
+  .card {
+    margin-bottom: 1rem; /* stack cards neatly */
+  }
+  .navbar-brand {
+    font-size: 1.2rem; /* shrink brand text */
+  }
+}
+
+    .modal-body {
+      background-color: var(--kca-white);
+    }
+
+    .modal-footer {
+      background-color: var(--kca-white);
+      border-top: none;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .card {
+        min-height: auto;
+        margin-bottom: 1rem;
+      }
+
+      .card:hover {
+        transform: none;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+      }
+
+      .btn-kca:hover,
+      .btn-logout:hover {
+        transform: none;
+      }
+
+      .kca-logo {
+        width: 80px;
+        bottom: 20px;
+        left: 20px;
+      }
+
+      h1 {
+        font-size: 1.75rem;
+      }
+
+      .display-4 {
+        font-size: 2.5rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .card {
+        margin-bottom: 1.5rem;
+      }
+
+      .kca-logo {
+        width: 60px;
+        bottom: 15px;
+        left: 15px;
+      }
+
+      .display-4 {
+        font-size: 2rem;
+      }
+
+      .btn-lg {
+        font-size: 1.25rem;
+        padding: 0.75rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<!-- KCA Logo-->
+<img src="{{ url_for('static', filename='kca_logo.png') }}"
+     alt="KCA University Logo" class="kca-logo left">
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">KCA Clinic Inventory System</a>
+    <div class="collapse navbar-collapse">
+      <span class="navbar-text ms-auto">
+        Logged in as {{ session['username'] }} ({{ session['role'] }})
+      </span>
+    </div>
+  </div>
+</nav>
+
+<div class="container mt-4">
+  <h1 class="mb-4 text-center">Dashboard</h1>
+
+  <!-- Top row: Inventory, Suppliers, Reports -->
+  <div class="row g-4 justify-content-center">
+    <!-- Inventory -->
+    <div class="col-md-4 col-sm-6">
+      <div class="card shadow-sm h-100 text-center">
+        <div class="card-body d-flex flex-column justify-content-center">
+          <i class="bi bi-boxes display-4" style="color:var(--kca-primary);"></i>
+          <h5 class="card-title mt-3">Inventory</h5>
+          <p class="card-text">Manage medicine inventory and stock levels.</p>
+          <a href="{{ url_for('inventory') }}" class="btn btn-kca mt-auto">Manage</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Suppliers -->
+    <div class="col-md-4 col-sm-6">
+      <div class="card shadow-sm h-100 text-center">
+        <div class="card-body d-flex flex-column justify-content-center">
+          <i class="bi bi-people-fill display-4" style="color: var(--kca-accent);"></i>
+          <h5 class="card-title mt-3">Suppliers</h5>
+          <p class="card-text">View and manage supplier details.</p>
+          <a href="{{ url_for('suppliers_page') }}" class="btn btn-kca mt-auto">Manage</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reports -->
+    <div class="col-md-4 col-sm-6">
+      <div class="card shadow-sm h-100 text-center">
+        <div class="card-body d-flex flex-column justify-content-center">
+          <i class="bi bi-graph-up display-4" style="color: var(--kca-primary);"></i>
+          <h5 class="card-title mt-3">Reports</h5>
+          <p class="card-text">Generate usage, expiry, and stock reports.</p>
+          <a href="{{ url_for('reports_dashboard') }}" class="btn btn-kca mt-auto">View Reports</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-4 justify-content-center">
+    <div class="col-md-6 col-sm-8">
+      <div class="card shadow-sm h-100 text-center py-4">
+        <div class="card-body d-flex flex-column justify-content-center">
+          <i class="bi bi-box-arrow-right display-4 text-danger"></i>
+          <h4 class="card-title mt-3">Logout</h4>
+          <p class="card-text">Sign out of your account securely.</p>
+          <button type="button" class="btn btn-logout btn-lg px-5 py-3" style="font-size: 1.5rem;"
+                  data-bs-toggle="modal" data-bs-target="#logoutModal">
+            Logout
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Logout Confirmation Modal -->
+<div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="logoutModalLabel">Confirm Logout</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to log out?</p>
+        <p class="text-muted">You'll need to log in again to access the system.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-cancel" data-bs-dismiss="modal">Cancel</button>
+        <a href="{{ url_for('logout') }}" class="btn btn-logout-confirm">Logout</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
