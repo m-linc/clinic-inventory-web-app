@@ -17,12 +17,12 @@
     body {
       background: linear-gradient(
       to bottom,
-      var(--kca-primary) 0%, var(--kca-primary) 8%,   /* Navy top */
-      var(--kca-accent) 8%, var(--kca-accent) 37%,   /* Gold stripe */
-      var(--kca-white) 37%, var(--kca-white) 100%     /* White all the way down */
+      var(--kca-primary) 0%, var(--kca-primary) 8%,   
+      var(--kca-accent) 8%, var(--kca-accent) 37%,   
+      var(--kca-white) 37%, var(--kca-white) 100%     
       );
-      background-repeat: no-repeat;   /* prevent tiling */
-      background-attachment: fixed;   /* fix gradient to viewport */
+      background-repeat: no-repeat;  
+      background-attachment: fixed;   
       font-family: 'Segoe UI', sans-serif;
     }
 
@@ -234,7 +234,7 @@
               </form>
             </td>
           </tr>
-          <!-- Inline edit form -->
+          <!--  edit form -->
           <tr id="edit-{{ s.id }}" class="d-none bg-light">
             <td colspan="5">
               <form action="{{ url_for('update_supplier', supplier_id=s.id) }}" method="post" class="row g-3">
