@@ -237,7 +237,7 @@ def add_medicine():
             """, (supplier_id,))
             conn.commit()
 
-        # 🔑 Audit log
+        #  Audit log
         details = f"Added new medicine: {name}, Batch #{batch_number}, Qty {quantity}"
         cur.execute("""
             INSERT INTO admin_audit_log (admin_user, action, resource, details, status)
@@ -313,7 +313,7 @@ def update_medicine(med_id):
             """, (med_id, supplier_id))
         conn.commit()
 
-        # 🔑 Audit log
+        # Audit log
         details = f"Edited {old_med['name']} (Batch {old_med['batch_number']}), Qty {old_med['quantity']} → {quantity}"
         cur.execute("""
             INSERT INTO admin_audit_log (admin_user, action, resource, details, status)
@@ -357,7 +357,7 @@ def delete_medicine(med_id):
         cur.execute("DELETE FROM medicine_notifications WHERE medicine_id=%s", (med_id,))
         conn.commit()
 
-        # 🔑 Audit log
+        #  Audit log
         details = f"Deleted {med['name']}, Batch #{med['batch_number']}"
         cur.execute("""
             INSERT INTO admin_audit_log (admin_user, action, resource, details, status)
@@ -401,7 +401,7 @@ def dispense_medicine():
     conn = get_connection()
     try:
         cur = conn.cursor(dictionary=True)
-        # ✅ Fetch medicine only if BOTH name and batch_number match
+        # Fetch medicine only if BOTH name and batch_number match
         cur.execute("""
             SELECT id, batch_number, quantity, supplier_id
             FROM medicines
@@ -549,7 +549,7 @@ def add_supplier():
         """, (company_name, email, phone))
         conn.commit()
 
-        # 🔑 Audit log
+        #  Audit log
         details = f"Added new supplier: {company_name}"
         cur.execute("""
             INSERT INTO admin_audit_log (admin_user, action, resource, details, status)
@@ -610,7 +610,7 @@ def update_supplier(supplier_id):
         """, (company_name, email, phone, supplier_id))
         conn.commit()
 
-        # 🔑 Audit log
+        #  Audit log
         details = f"Edited supplier {old_supplier['company_name']} → {company_name}"
         cur.execute("""
             INSERT INTO admin_audit_log (admin_user, action, resource, details, status)
@@ -664,7 +664,7 @@ def delete_supplier(supplier_id):
         cur.execute("DELETE FROM medicine_notifications WHERE supplier_id = %s", (supplier_id,))
         conn.commit()
 
-        # 🔑 Audit log
+        #  Audit log
         details = f"Deleted supplier {supplier['company_name']}"
         cur.execute("""
             INSERT INTO admin_audit_log (admin_user, action, resource, details, status)
@@ -721,7 +721,7 @@ def reports_dashboard():
         """)
         logs = cur.fetchall()
 
-        # 🔑 Admin Audit Log
+        #  Admin Audit Log
         cur.execute("""
             SELECT admin_user, action, resource, details, status, timestamp
             FROM admin_audit_log
@@ -769,7 +769,7 @@ def reports_dashboard():
         return render_template(
             "reports.html",
             logs=logs,
-            audits=audits,              # ✅ Added here
+            audits=audits,
             most_dispensed=most_dispensed,
             least_dispensed=least_dispensed,
             expired=expired,
