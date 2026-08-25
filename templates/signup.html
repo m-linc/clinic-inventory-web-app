@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <title>Sign Up</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Bootstrap CSS & Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -25,12 +24,12 @@
       padding: 30px;
       border-radius: 12px;
       box-shadow: 0 6px 16px rgba(0,0,0,0.25);
-      width: 500px;              /* fixed width */
-      height: auto;              /* natural height */
+      width: 500px;
+      height: auto;
     }
 
     .signup-box h1 {
-      color: #192C57; /* KCA navy */
+      color: #192C57;
       margin-bottom: 20px;
       text-align: center;
     }
@@ -128,7 +127,6 @@
       const email = document.getElementById('email').value.trim();
       const phone = document.getElementById('phone').value.trim();
 
-      // Username: must be longer than 2 characters
       if (username.length <= 2) {
         alert("Username must be longer than 2 characters");
         isValid = false;
@@ -137,14 +135,11 @@
         isValid = false;
       }
 
-      // Password: must contain at least 1 capital letter
       if (!/[A-Z]/.test(password)) {
         alert("Password must contain at least 1 uppercase letter");
         isValid = false;
       }
 
-
-      // Phone: must be at least 10 digits
       if (phone.length < 10) {
         alert("Phone must be at least 10 digits");
         isValid = false;
