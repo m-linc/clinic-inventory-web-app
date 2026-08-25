@@ -4,29 +4,27 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Inventory</title>
-  <!-- Bootstrap CSS & Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
   <style>
     :root {
-      --kca-primary: #192C57; /* Navy */
-      --kca-accent: #CEAA0C;  /* Gold */
-      --kca-white: #FFFFFF;   /* White */
+      --kca-primary: #192C57;
+      --kca-accent: #CEAA0C;
+      --kca-white: #FFFFFF;
     }
 
     body {
         background: linear-gradient(
           to bottom,
-          var(--kca-primary) 0%, var(--kca-primary) 8%,   /* Navy top */
-          var(--kca-accent) 8%, var(--kca-accent) 30%,   /* Gold stripe */
-          var(--kca-white) 30%, var(--kca-white) 100%     /* White all the way down */
+          var(--kca-primary) 0%, var(--kca-primary) 8%,
+          var(--kca-accent) 8%, var(--kca-accent) 30%,
+          var(--kca-white) 30%, var(--kca-white) 100%
         );
-        background-repeat: no-repeat;   /* prevent tiling */
-        background-attachment: fixed;   /* fix gradient to viewport */
+        background-repeat: no-repeat;
+        background-attachment: fixed;
         font-family: 'Segoe UI', sans-serif;
     }
 
-    /* Navbar styling */
     .navbar {
       background-color: var(--kca-primary) !important;
     }
@@ -44,12 +42,10 @@
       color: var(--kca-accent) !important;
     }
 
-    /* Card titles */
     .card-title {
       color: var(--kca-primary);
     }
 
-    /* Buttons styling for branding */
     .btn-success {
       background-color: var(--kca-primary);
       border: none;
@@ -67,7 +63,7 @@
       background-color: var(--kca-accent);
       color: var(--kca-primary);
     }
-    /* Additional button styles for other actions */
+    
     .btn-navy {
       background-color: var(--kca-primary);
       border: none;
@@ -102,7 +98,6 @@
       background-color: #5a6268;
     }
 
-    /* Inventory table styling */
     tbody tr:nth-child(even) {
       background-color: #f8f9fa; 
     }
