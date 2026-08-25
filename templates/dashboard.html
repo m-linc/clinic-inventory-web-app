@@ -9,9 +9,9 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
   <style>
     :root {
-      --kca-primary: #192C57; /* Navy */
-      --kca-accent: #CEAA0C;  /* Gold */
-      --kca-white: #FFFFFF;  /* White */
+      --kca-primary: #192C57; 
+      --kca-accent: #CEAA0C;  
+      --kca-white: #FFFFFF; 
     }
 
 html, body {
@@ -22,16 +22,15 @@ html, body {
 body {
   background: linear-gradient(
     to bottom,
-    var(--kca-primary) 0%, var(--kca-primary) 10%,   /* Navy top */
-    var(--kca-accent) 10%, var(--kca-accent) 50%,   /* Gold stripe */
-    var(--kca-white) 50%, var(--kca-white) 100%     /* White all the way down */
+    var(--kca-primary) 0%, var(--kca-primary) 10%,
+    var(--kca-accent) 10%, var(--kca-accent) 50%,
+    var(--kca-white) 50%, var(--kca-white) 100% 
   );
   background-repeat: no-repeat;
   background-attachment: fixed;
   font-family: 'Segoe UI', sans-serif;
 }
 
-/* Navbar */
 .navbar {
   background-color: var(--kca-primary) !important;
 }
@@ -43,17 +42,16 @@ body {
   color: var(--kca-white) !important;
 }
 
-/* Headings */
+
 h1 {
   color: var(--kca-primary);
-  font-size: clamp(1.5rem, 2vw, 2.5rem); /* scales with screen size */
+  font-size: clamp(1.5rem, 2vw, 2.5rem); 
 }
 
-/* Cards */
 .card {
   border: 1px solid var(--kca-primary);
   transition: all 0.3s ease-in-out;
-  min-height: auto; /* let Bootstrap grid handle sizing */
+  min-height: auto; 
 }
 
 .card:hover {
@@ -79,7 +77,6 @@ h1 {
   color: var(--kca-primary);
 }
 
-/* Buttons */
 .btn-kca {
   background-color: var(--kca-primary);
   color: var(--kca-white);
@@ -93,7 +90,7 @@ h1 {
 }
 
 .btn-logout {
-  background-color: #dc3545; /* Bootstrap red */
+  background-color: #dc3545;
   border: none;
   transition: all 0.3s ease-in-out;
 }
@@ -107,7 +104,7 @@ h1 {
   position: fixed;
   bottom: 2%;
   left: 2%;
-  width: clamp(60px, 8vw, 100px); /* scales with screen size */
+  width: clamp(60px, 8vw, 100px);
   opacity: 0.8;
   z-index: 1000;
   transition: opacity 0.3s ease-in-out;
@@ -128,16 +125,15 @@ h1 {
   border-bottom: none;
 }
 
-/* Responsive tweaks */
 @media (max-width: 768px) {
   h1 {
-    font-size: 1.5rem; /* smaller headings on tablets/phones */
+    font-size: 1.5rem;
   }
   .card {
-    margin-bottom: 1rem; /* stack cards neatly */
+    margin-bottom: 1rem;
   }
   .navbar-brand {
-    font-size: 1.2rem; /* shrink brand text */
+    font-size: 1.2rem;
   }
 }
 
@@ -150,7 +146,6 @@ h1 {
       border-top: none;
     }
 
-    /* Responsive adjustments */
     @media (max-width: 768px) {
       .card {
         min-height: auto;
