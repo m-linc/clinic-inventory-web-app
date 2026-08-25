@@ -9,9 +9,9 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
   <style>
     :root {
-      --kca-primary: #192C57; /* Navy */
-      --kca-accent: #CEAA0C;  /* Gold */
-      --kca-white: #FFFFFF;   /* White */
+      --kca-primary: #192C57;
+      --kca-accent: #CEAA0C;
+      --kca-white: #FFFFFF;
     }
 
     body {
@@ -26,7 +26,6 @@
       font-family: 'Segoe UI', sans-serif;
     }
 
-    /* Navbar styling */
     .navbar {
       background-color: var(--kca-primary) !important;
     }
@@ -45,7 +44,6 @@
       font-weight: bold;
     }
 
-    /* Flash alerts */
     .alert {
       margin-top: 1rem;
     }
@@ -105,7 +103,6 @@
       background-color: #ececec;
     }
 
-    /* Card titles */
     .card-title {
       border-bottom: 3px solid var(--kca-accent); /* Gold underline */
       padding-bottom: 0.5rem;
@@ -157,7 +154,7 @@
     {% endif %}
   {% endwith %}
 
-  <!-- Add Supplier Form -->
+  <!-- Supplier Form -->
   <div class="card shadow-sm mb-4">
     <div class="card-body">
       <h5 class="card-title">Add New Supplier</h5>
@@ -183,7 +180,6 @@
     </div>
   </div>
 
-  <!-- Search -->
   <div class="card shadow-sm mb-4">
     <div class="card-body">
       <h5 class="card-title">Search Suppliers</h5>
@@ -220,12 +216,12 @@
             <td>{{ s.email }}</td>
             <td>{{ s.phone }}</td>
             <td>
-              <!-- Edit Button -->
+              
               <button type="button" class="btn btn-warning btn-sm"
                       onclick="document.getElementById('edit-{{ s.id }}').classList.toggle('d-none');">
                 <i class="bi bi-pencil"></i> Edit
               </button>
-              <!-- Delete Button -->
+              
               <form action="{{ url_for('delete_supplier', supplier_id=s.id) }}" method="post" class="d-inline"
                     onsubmit="return confirm('Are you sure you want to delete this supplier?');">
                 <button type="submit" class="btn btn-danger btn-sm">
